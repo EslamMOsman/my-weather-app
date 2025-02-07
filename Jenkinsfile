@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_CREDENTIALS_ID = 'jenkins-two'  // Replace with the actual credentials ID in Jenkins
+        GIT_CREDENTIALS_ID = 'jenkins-two'  
         GIT_REPO = 'https://github.com/EslamMOsman/my-weather-app.git'
         GIT_BRANCH = 'main'
     }
