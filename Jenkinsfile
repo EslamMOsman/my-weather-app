@@ -1,18 +1,21 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Clone Repo') {
-            steps {
-                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/eslam3toss/my-weather-app.git'
-            }
-        }
+    environment {
+        GITHUB_TOKEN = credentials('jenkins')  
+    }
 
-        stage('Start Server') {
+    stages {
+        stage('Checkout') {
             steps {
                 script {
-                    sh 'nohup python3 -m http.server 9090 --directory . > server.log 2>&1 &' 
+                    sh 'git clone https://$GITHUB_USER:$GITHUB_TOKEN@github.com/EslamMOsman/my-weather-app.git'
                 }
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
             }
         }
     }
